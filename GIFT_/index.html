@@ -1,0 +1,1670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+<title>Happy Birthday 🎂</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎂</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --blush: #ffd6e8;
+    --blush-deep: #ffb3d1;
+    --lavender: #e3d6ff;
+    --lavender-deep: #cbb3ff;
+    --cream: #fff6ee;
+    --gold: #f3c96b;
+    --rose-gold: #e8a4a0;
+    --deep-rose: #c0426b;
+    --text-dark: #5a3b4a;
+    --white-glass: rgba(255,255,255,0.55);
+    --white-glass-strong: rgba(255,255,255,0.75);
+    --border-glass: rgba(255,255,255,0.65);
+    --shadow-dreamy: 0 20px 50px rgba(192, 66, 107, 0.15);
+    font-family: 'Quicksand', sans-serif;
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+
+  html{
+    scroll-behavior: smooth;
+  }
+
+  body{
+    background: linear-gradient(160deg, var(--cream) 0%, var(--blush) 45%, var(--lavender) 100%);
+    color: var(--text-dark);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  body.lock-scroll{
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  ::-webkit-scrollbar{ width: 8px; }
+  ::-webkit-scrollbar-track{ background: transparent; }
+  ::-webkit-scrollbar-thumb{
+    background: linear-gradient(var(--rose-gold), var(--lavender-deep));
+    border-radius: 10px;
+  }
+  * { scrollbar-width: thin; scrollbar-color: var(--rose-gold) transparent; }
+
+  img{ max-width: 100%; display:block; }
+
+  .script{ font-family: 'Dancing Script', cursive; }
+
+  .shimmer-text{
+    background: linear-gradient(90deg, var(--deep-rose), var(--lavender-deep), var(--gold), var(--deep-rose));
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 6s linear infinite;
+  }
+
+  @keyframes shimmer{
+    0%{ background-position: 0% center; }
+    100%{ background-position: 300% center; }
+  }
+
+  section{
+    position: relative;
+    width: 100%;
+    padding: 90px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ---------- Particles ---------- */
+  #particles{
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+  }
+  .particle{
+    position: absolute;
+    bottom: -10%;
+    opacity: 0.55;
+    animation: floatUp linear infinite;
+    will-change: transform;
+  }
+  .particle.dot{
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--rose-gold);
+  }
+  @keyframes floatUp{
+    0%{ transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+    10%{ opacity: 0.55; }
+    90%{ opacity: 0.4; }
+    100%{ transform: translateY(-110vh) translateX(20px) rotate(200deg); opacity: 0; }
+  }
+
+  /* ---------- Entry Screen ---------- */
+  #entry-overlay{
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(160deg, var(--blush) 0%, var(--lavender) 60%, var(--cream) 100%);
+    padding: 24px;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  #entry-overlay.hide{
+    opacity: 0;
+    transform: scale(1.1);
+    pointer-events: none;
+  }
+
+  .envelope{
+    width: 130px;
+    height: 90px;
+    position: relative;
+    margin-bottom: 34px;
+    animation: envFloat 3.5s ease-in-out infinite;
+  }
+  @keyframes envFloat{
+    0%,100%{ transform: translateY(0) rotate(-2deg); }
+    50%{ transform: translateY(-14px) rotate(2deg); }
+  }
+  .envelope .body{
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(145deg, #fff, var(--blush-deep));
+    border-radius: 12px;
+    box-shadow: var(--shadow-dreamy);
+    border: 2px solid var(--white-glass-strong);
+  }
+  .envelope .flap{
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 0;
+    border-left: 65px solid transparent;
+    border-right: 65px solid transparent;
+    border-top: 55px solid var(--rose-gold);
+    border-radius: 6px 6px 0 0;
+    filter: drop-shadow(0 3px 4px rgba(0,0,0,0.08));
+  }
+  .envelope .heart{
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 26px;
+    animation: heartBeat 1.6s ease-in-out infinite;
+  }
+  @keyframes heartBeat{
+    0%,100%{ transform: translate(-50%,-50%) scale(1); }
+    50%{ transform: translate(-50%,-50%) scale(1.18); }
+  }
+
+  #entry-overlay h1{
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.2rem, 8vw, 3.4rem);
+    color: var(--deep-rose);
+    margin-bottom: 10px;
+  }
+  #entry-overlay p{
+    font-size: 1.05rem;
+    color: var(--text-dark);
+    opacity: 0.85;
+    margin-bottom: 34px;
+  }
+
+  .glow-btn{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #fff;
+    background: linear-gradient(135deg, var(--deep-rose), var(--rose-gold));
+    border: none;
+    padding: 16px 34px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 0 0 rgba(192,66,107,0.5);
+    animation: pulseGlow 2.2s infinite;
+    transition: transform 0.25s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .glow-btn:active{ transform: scale(0.96); }
+  @keyframes pulseGlow{
+    0%{ box-shadow: 0 0 0 0 rgba(192,66,107,0.45); }
+    70%{ box-shadow: 0 0 0 18px rgba(192,66,107,0); }
+    100%{ box-shadow: 0 0 0 0 rgba(192,66,107,0); }
+  }
+
+  /* ---------- Generic glass card ---------- */
+  .glass{
+    background: var(--white-glass);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--border-glass);
+    border-radius: 20px;
+    box-shadow: var(--shadow-dreamy);
+  }
+
+  .reveal{
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.in-view{
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ---------- Hero ---------- */
+  #hero{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  .badge{
+    display: inline-block;
+    background: var(--white-glass-strong);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border-glass);
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--deep-rose);
+    margin-bottom: 26px;
+    letter-spacing: 0.5px;
+  }
+  #hero h1.title{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
+    color: var(--text-dark);
+    margin-bottom: 6px;
+  }
+  #hero .name{
+    font-family: 'Dancing Script', cursive;
+    font-weight: 700;
+    font-size: clamp(3.2rem, 14vw, 6.5rem);
+    line-height: 1.15;
+    margin-bottom: 18px;
+  }
+  #hero .sub{
+    max-width: 520px;
+    font-size: 1.05rem;
+    opacity: 0.85;
+    margin-bottom: 30px;
+  }
+  .emoji-row{
+    display: flex;
+    gap: 22px;
+    font-size: 2rem;
+    margin-bottom: 50px;
+  }
+  .emoji-row span{
+    display: inline-block;
+    animation: bounce 1.8s ease-in-out infinite;
+  }
+  @keyframes bounce{
+    0%,100%{ transform: translateY(0); }
+    50%{ transform: translateY(-16px); }
+  }
+  .scroll-indicator{
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    opacity: 0.7;
+  }
+  .chevron{
+    font-size: 1.3rem;
+    animation: chevronBounce 1.6s ease-in-out infinite;
+  }
+  @keyframes chevronBounce{
+    0%,100%{ transform: translateY(0); opacity: 0.5; }
+    50%{ transform: translateY(8px); opacity: 1; }
+  }
+
+  /* ---------- Section headers ---------- */
+  .sec-head{
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .sec-tag{
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--deep-rose);
+    background: var(--white-glass-strong);
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 16px;
+  }
+  .sec-head h2{
+    font-family: 'Dancing Script', cursive;
+    font-weight: 700;
+    font-size: clamp(2.2rem, 7vw, 3.4rem);
+    color: var(--deep-rose);
+    margin-bottom: 12px;
+  }
+  .sec-head p{
+    max-width: 560px;
+    margin: 0 auto;
+    opacity: 0.8;
+    font-size: 1rem;
+  }
+
+  /* ---------- Memory Lane ---------- */
+  .timeline{
+    position: relative;
+    padding-left: 34px;
+  }
+  .timeline::before{
+    content: "";
+    position: absolute;
+    left: 9px;
+    top: 6px;
+    bottom: 6px;
+    width: 3px;
+    background: linear-gradient(var(--rose-gold), var(--lavender-deep), var(--gold));
+    border-radius: 4px;
+  }
+  .memory-card{
+    position: relative;
+    margin-bottom: 46px;
+    padding: 26px;
+  }
+  .memory-card:last-child{ margin-bottom: 0; }
+  .memory-dot{
+    position: absolute;
+    left: -34px;
+    top: 26px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--deep-rose), var(--rose-gold));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    box-shadow: 0 0 0 5px rgba(255,255,255,0.6);
+  }
+  .memory-date{
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--deep-rose);
+    background: rgba(255,255,255,0.6);
+    padding: 4px 12px;
+    border-radius: 50px;
+    margin-bottom: 10px;
+  }
+  .memory-card h3{
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.9rem;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+  }
+  .memory-card p.memory-text{
+    font-size: 0.98rem;
+    line-height: 1.65;
+    opacity: 0.9;
+    margin-bottom: 18px;
+  }
+  .photo-slot{
+    width: 100%;
+    max-width: 340px;
+    aspect-ratio: 4/3;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+  }
+  .photo-slot img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .photo-placeholder{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(120deg, var(--blush), var(--lavender), var(--blush-deep), var(--lavender-deep));
+    background-size: 300% 300%;
+    animation: gradientShift 6s ease infinite;
+    color: var(--deep-rose);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-align: center;
+  }
+  .photo-placeholder .icon{ font-size: 1.8rem; }
+  @keyframes gradientShift{
+    0%{ background-position: 0% 50%; }
+    50%{ background-position: 100% 50%; }
+    100%{ background-position: 0% 50%; }
+  }
+  .memory-card:hover{
+    transform: translateY(-4px);
+    transition: transform 0.35s ease;
+  }
+
+  /* ---------- Meanings grid ---------- */
+  .meanings-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+  }
+  .meaning-card{
+    padding: 32px 26px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .meaning-card:hover{
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 26px 55px rgba(192,66,107,0.22);
+  }
+  .meaning-card .icon{
+    font-size: 2.4rem;
+    margin-bottom: 14px;
+  }
+  .meaning-card h3{
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.6rem;
+    color: var(--deep-rose);
+    margin-bottom: 10px;
+  }
+  .meaning-card p{
+    font-size: 0.92rem;
+    line-height: 1.6;
+    opacity: 0.85;
+  }
+
+  /* ---------- Gallery ---------- */
+  .gallery-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px 24px;
+  }
+  @media (max-width: 720px){
+    .gallery-grid{ grid-template-columns: repeat(2, 1fr); gap: 24px 16px; }
+  }
+  .polaroid{
+    background: #fffdfa;
+    padding: 14px 14px 20px;
+    border-radius: 8px;
+    box-shadow: 0 14px 30px rgba(192,66,107,0.18);
+    position: relative;
+    transform: rotate(var(--rot, -2deg));
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+  .polaroid:hover{
+    transform: rotate(0deg) scale(1.06);
+    box-shadow: 0 20px 40px rgba(192,66,107,0.32);
+    z-index: 5;
+  }
+  .tape{
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-3deg);
+    width: 70px;
+    height: 22px;
+    background: rgba(232, 219, 186, 0.65);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  }
+  .polaroid .photo-slot{
+    max-width: none;
+    aspect-ratio: 1/1;
+    border-radius: 3px;
+    margin-bottom: 12px;
+  }
+  .polaroid .caption{
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.15rem;
+    text-align: center;
+    color: var(--text-dark);
+  }
+
+  /* ---------- Reasons (flip cards) ---------- */
+  .reasons-scroll{
+    display: flex;
+    gap: 22px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 10px 6px 30px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .reasons-scroll::-webkit-scrollbar{ height: 8px; }
+  .flip-card{
+    flex: 0 0 auto;
+    width: 220px;
+    height: 280px;
+    scroll-snap-align: center;
+    perspective: 1200px;
+    cursor: pointer;
+  }
+  .flip-inner{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s cubic-bezier(0.4,0.2,0.2,1);
+    transform-style: preserve-3d;
+  }
+  .flip-card.flipped .flip-inner,
+  .flip-card:hover .flip-inner{
+    transform: rotateY(180deg);
+  }
+  .flip-face{
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    padding: 22px;
+    text-align: center;
+  }
+  .flip-front{
+    background: var(--white-glass-strong);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-glass);
+  }
+  .flip-front .num{
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    color: var(--deep-rose);
+    margin-bottom: 10px;
+  }
+  .flip-front .tap-label{
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: 0.65;
+  }
+  .flip-back{
+    background: linear-gradient(150deg, var(--deep-rose), var(--lavender-deep));
+    color: #fff;
+    transform: rotateY(180deg);
+  }
+  .flip-back p{
+    font-size: 1rem;
+    line-height: 1.55;
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+  .flip-back .emoji{ font-size: 1.8rem; }
+
+  /* ---------- Cake ---------- */
+  #cake-section{
+    text-align: center;
+  }
+  .cake-wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .cake{
+    position: relative;
+    width: 220px;
+    margin-bottom: 34px;
+  }
+  .candles{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: -6px;
+  }
+  .candle{
+    width: 8px;
+    height: 34px;
+    background: linear-gradient(var(--gold), var(--rose-gold));
+    border-radius: 3px;
+    position: relative;
+  }
+  .flame{
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 16px;
+    background: radial-gradient(circle at 50% 70%, #fff6c0, #ffb648 60%, #ff7a3d);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: flicker 0.5s ease-in-out infinite alternate;
+    transition: opacity 0.5s ease;
+  }
+  .candle:nth-child(2) .flame{ animation-delay: 0.15s; }
+  .candle:nth-child(3) .flame{ animation-delay: 0.3s; }
+  @keyframes flicker{
+    0%{ transform: translateX(-50%) scale(1) rotate(-4deg); }
+    100%{ transform: translateX(-50%) scale(1.15) rotate(4deg); }
+  }
+  .flame.out{ opacity: 0; }
+  .layer{
+    width: 100%;
+    border-radius: 14px;
+    position: relative;
+    box-shadow: inset 0 -6px 10px rgba(192,66,107,0.15);
+  }
+  .layer1{ height: 46px; background: linear-gradient(160deg, #ffd6e8, #ffb3d1); width: 62%; margin: 0 auto; }
+  .layer2{ height: 56px; background: linear-gradient(160deg, #ffc3dc, #f296bb); width: 82%; margin: 6px auto 0; }
+  .layer3{ height: 64px; background: linear-gradient(160deg, #ffb3d1, #e8829e); width: 100%; margin: 6px auto 0; }
+  .drip{
+    position: absolute;
+    bottom: -6px;
+    width: 14px;
+    height: 14px;
+    background: inherit;
+    border-radius: 50%;
+  }
+  .cake-instruction{
+    font-size: 0.95rem;
+    opacity: 0.75;
+    margin-top: 6px;
+  }
+  .wish-message{
+    margin-top: 26px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    color: var(--deep-rose);
+    opacity: 0;
+    transform: scale(0.7);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .wish-message.show{
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* ---------- Letter ---------- */
+  #letter-section{
+    text-align: center;
+  }
+  .letter-envelope{
+    max-width: 380px;
+    margin: 0 auto;
+    padding: 50px 30px;
+    text-align: center;
+    background: linear-gradient(160deg, var(--blush), var(--blush-deep));
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .letter-envelope.hidden{
+    display: none;
+  }
+  .letter-envelope .big-emoji{
+    font-size: 3rem;
+    margin-bottom: 14px;
+    animation: heartBeat 1.8s ease-in-out infinite;
+  }
+  .letter-envelope p{
+    font-weight: 600;
+    color: var(--deep-rose);
+  }
+  .letter-paper{
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 46px 36px;
+    text-align: left;
+    background: #fffdf9;
+    transform: scaleY(0.3);
+    transform-origin: top;
+    opacity: 0;
+    transition: transform 0.7s cubic-bezier(0.3,0.6,0.3,1), opacity 0.5s ease;
+    display: none;
+  }
+  .letter-paper.show{
+    display: block;
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  .letter-paper .greeting{
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: var(--deep-rose);
+    margin-bottom: 20px;
+  }
+  .letter-paper .body-text{
+    white-space: pre-wrap;
+    line-height: 1.8;
+    font-size: 1rem;
+    min-height: 160px;
+    color: var(--text-dark);
+  }
+  .letter-paper .sign{
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.6rem;
+    color: var(--deep-rose);
+    text-align: right;
+    margin-top: 24px;
+  }
+  .cursor-blink{
+    display: inline-block;
+    width: 2px;
+    background: var(--deep-rose);
+    margin-left: 2px;
+    animation: blink 0.8s step-end infinite;
+  }
+  @keyframes blink{
+    0%,100%{ opacity: 1; }
+    50%{ opacity: 0; }
+  }
+
+  /* ---------- Finale ---------- */
+  #finale-section{
+    text-align: center;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .finale-btn-wrap{
+    transition: opacity 0.5s ease;
+  }
+  .finale-btn-wrap.hidden{
+    display: none;
+  }
+  .finale-content{
+    display: none;
+    opacity: 0;
+    transform: scale(0.85);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .finale-content.show{
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+  }
+  .finale-content .top-line{
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+  }
+  .finale-content .name{
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.8rem, 12vw, 5.5rem);
+    margin-bottom: 20px;
+  }
+  .finale-emojis{
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    font-size: 1.8rem;
+    margin-bottom: 26px;
+  }
+  .finale-emojis span{
+    display: inline-block;
+    animation: bounce 2s ease-in-out infinite;
+  }
+  .finale-content .wish{
+    max-width: 520px;
+    margin: 0 auto 30px;
+    font-size: 1.02rem;
+    line-height: 1.7;
+    opacity: 0.9;
+  }
+  footer{
+    text-align: center;
+    padding: 40px 20px 60px;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.3rem;
+    color: var(--deep-rose);
+  }
+
+  @media (max-width: 600px){
+    section{ padding: 70px 16px; }
+    .memory-card{ padding: 20px; }
+    .flip-card{ width: 190px; height: 250px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* ---------- Edit Mode ---------- */
+  .edit-toggle-btn{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 500;
+    background: linear-gradient(135deg, var(--deep-rose), var(--rose-gold));
+    color: #fff;
+    border: none;
+    padding: 13px 20px;
+    border-radius: 50px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(192,66,107,0.4);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .edit-toolbar{
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 600;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-glass);
+    padding: 10px 16px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: 0.8rem;
+  }
+  body.edit-mode .edit-toolbar{ display: flex; }
+  body.edit-mode{ padding-top: 54px; }
+  .edit-toolbar .hint{
+    color: var(--text-dark);
+    opacity: 0.8;
+    font-weight: 600;
+  }
+  .edit-toolbar button{
+    background: var(--white-glass-strong);
+    border: 1px solid var(--border-glass);
+    padding: 7px 14px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--deep-rose);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.78rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .edit-toolbar button:hover{ background: #fff; }
+
+  body.edit-mode [data-cfg]{
+    cursor: text;
+    border-radius: 6px;
+    outline: 1px dashed transparent;
+    outline-offset: 3px;
+    transition: outline 0.15s ease, background 0.15s ease;
+  }
+  body.edit-mode [data-cfg]:hover,
+  body.edit-mode [data-cfg]:focus{
+    outline: 1px dashed var(--deep-rose);
+    background: rgba(255,255,255,0.4);
+  }
+
+  .photo-edit-btn{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    padding: 8px 10px;
+    background: rgba(30,15,20,0.62);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body.edit-mode .photo-edit-btn{ display: flex; }
+
+  body.edit-mode .letter-envelope{ display: none !important; }
+  body.edit-mode .letter-paper{
+    display: block !important;
+    opacity: 1 !important;
+    transform: scaleY(1) !important;
+  }
+  body.edit-mode .finale-btn-wrap{ display: none !important; }
+  body.edit-mode .finale-content{
+    display: block !important;
+    opacity: 1 !important;
+    transform: scale(1) !important;
+  }
+  body.edit-mode .wish-message{
+    opacity: 1 !important;
+    transform: scale(1) !important;
+  }
+  body.edit-mode .flip-inner{ transform: rotateY(180deg) !important; }
+</style>
+</head>
+<body class="lock-scroll">
+
+<div id="particles"></div>
+
+<!-- ============ ENTRY OVERLAY ============ -->
+<div id="entry-overlay">
+  <div class="envelope">
+    <div class="flap"></div>
+    <div class="body"></div>
+    <div class="heart">💗</div>
+  </div>
+  <h1 id="entry-heading"></h1>
+  <p id="entry-sub"></p>
+  <button class="glow-btn" id="entry-btn"></button>
+</div>
+
+<!-- ============ HERO ============ -->
+<section id="hero">
+  <span class="badge" id="hero-badge"></span>
+  <h1 class="title" id="hero-title"></h1>
+  <h2 class="name script shimmer-text" id="hero-name"></h2>
+  <p class="sub" id="hero-sub"></p>
+  <div class="emoji-row">
+    <span style="animation-delay:0s">🎂</span>
+    <span style="animation-delay:0.15s">🎈</span>
+    <span style="animation-delay:0.3s">🎁</span>
+    <span style="animation-delay:0.45s">💖</span>
+  </div>
+  <div class="scroll-indicator">
+    <span>scroll down</span>
+    <span class="chevron">⌄</span>
+  </div>
+</section>
+
+<!-- ============ MEMORY LANE ============ -->
+<section id="memories-section">
+  <div class="sec-head reveal">
+    <span class="sec-tag">Our Story</span>
+    <h2 class="script">Memories That Matter</h2>
+    <p>Every friendship has a story written in small, quiet moments — here are a few of ours.</p>
+  </div>
+  <div class="timeline" id="memories-container"></div>
+</section>
+
+<!-- ============ MEANINGS ============ -->
+<section id="meanings-section">
+  <div class="sec-head reveal">
+    <span class="sec-tag">To Us, You Are</span>
+    <h2 class="script">What You Mean To Us</h2>
+    <p>Some people just make everything better. This is our attempt at putting that into words.</p>
+  </div>
+  <div class="meanings-grid" id="meanings-container"></div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section id="gallery-section">
+  <div class="sec-head reveal">
+    <span class="sec-tag">Snapshots</span>
+    <h2 class="script">Little Moments, Framed</h2>
+    <p>A few pictures worth keeping forever.</p>
+  </div>
+  <div class="gallery-grid" id="gallery-container"></div>
+</section>
+
+<!-- ============ REASONS ============ -->
+<section id="reasons-section">
+  <div class="sec-head reveal">
+    <span class="sec-tag">Fun Facts</span>
+    <h2 class="script">Reasons You're Special</h2>
+    <p>Tap or hover each card to flip it.</p>
+  </div>
+  <div class="reasons-scroll" id="reasons-container"></div>
+</section>
+
+<!-- ============ CAKE ============ -->
+<section id="cake-section">
+  <div class="sec-head reveal">
+    <span class="sec-tag">Make A Wish</span>
+    <h2 class="script">One More Birthday Ritual</h2>
+  </div>
+  <div class="cake-wrap reveal" id="cake-wrap">
+    <div class="cake">
+      <div class="candles">
+        <div class="candle"><div class="flame" data-flame></div></div>
+        <div class="candle"><div class="flame" data-flame></div></div>
+        <div class="candle"><div class="flame" data-flame></div></div>
+      </div>
+      <div class="layer layer1"></div>
+      <div class="layer layer2"></div>
+      <div class="layer layer3"></div>
+    </div>
+    <p class="cake-instruction" id="cake-text"></p>
+    <p class="wish-message" id="cake-wish"></p>
+  </div>
+</section>
+
+<!-- ============ LETTER ============ -->
+<section id="letter-section">
+  <div class="sec-head reveal">
+    <span class="sec-tag">Just For You</span>
+    <h2 class="script">A Letter, Sealed With Love</h2>
+  </div>
+  <div class="letter-envelope glass reveal" id="letter-envelope">
+    <div class="big-emoji">💌</div>
+    <p>Tap to open your letter</p>
+  </div>
+  <div class="letter-paper glass" id="letter-paper">
+    <div class="greeting" id="letter-greeting"></div>
+    <div class="body-text" id="letter-body"></div>
+    <div class="sign" id="letter-sign"></div>
+  </div>
+</section>
+
+<!-- ============ FINALE ============ -->
+<section id="finale-section">
+  <div class="sec-head reveal">
+    <span class="sec-tag">Thank you for existing in our life and making it more beautiful day by day</span>
+  </div>
+  <div class="finale-btn-wrap reveal" id="finale-btn-wrap">
+    <button class="glow-btn" id="finale-btn">Tap for the big surprise 💖</button>
+  </div>
+  <div class="finale-content" id="finale-content">
+    <p class="top-line" id="finale-line"></p>
+    <h2 class="name script shimmer-text" id="finale-name"></h2>
+    <div class="finale-emojis">
+      <span style="animation-delay:0s">💖</span>
+      <span style="animation-delay:0.1s">✨</span>
+      <span style="animation-delay:0.2s">💫</span>
+      <span style="animation-delay:0.3s">🎉</span>
+      <span style="animation-delay:0.4s">💕</span>
+    </div>
+    <p class="wish" id="finale-wish"></p>
+  </div>
+</section>
+
+<footer id="footer-note"></footer>
+
+<!-- ============ EDIT MODE UI ============ -->
+<div class="edit-toolbar" id="edit-toolbar">
+  <span class="hint">✏️ Editing on — click any text to edit it, tap a photo to change it. Changes save automatically.</span>
+  <button id="edit-backup-btn" type="button">⬇️ Backup</button>
+  <button id="edit-restore-btn" type="button">⬆️ Restore</button>
+  <input type="file" id="edit-restore-input" accept="application/json" style="display:none">
+  <button id="edit-reset-btn" type="button">↺ Reset</button>
+  <button id="edit-done-btn" type="button">✅ Done</button>
+</div>
+<button class="edit-toggle-btn" id="edit-toggle-btn" type="button">✏️ Edit Content</button>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<script>
+/* ══════════════════════════════════════════════════════════════
+   CONFIG — EDIT EVERYTHING BELOW. THIS IS THE ONLY SECTION YOU
+   NEED TO TOUCH TO CUSTOMIZE THE ENTIRE SITE.
+   ══════════════════════════════════════════════════════════════ */
+let CONFIG = {
+
+  // ── HER NAME ──
+  name: "Harpreet",
+
+  // ── ENTRY / LANDING SCREEN ──
+  entryHeading: "You've got a surprise!",
+  entrySub: "something special is waiting for you",
+  entryBtn: "Open Your Surprise 🎁",
+
+  // ── HERO SECTION ──
+  heroBadge: "✨ It's Your Special Day ✨",
+  heroTitle: "Happy Birthday",
+  heroSub: "Today the world gets to celebrate the person who makes everything a little brighter, a little softer, and a lot more fun.",
+
+  // ── MEMORIES (FRIENDSHIP MEMORY LANE) ──
+  // Add/remove objects freely — the page rebuilds automatically.
+  // photo: "" shows an animated placeholder. Paste an image URL to replace it.
+  memories: [
+    {
+      date: "Where It Began",
+      emoji: "🌱",
+      title: "The Day We First Met",
+      text: "I still remember how random it felt — two strangers who somehow ended up talking for hours like we'd known each other for years. I don't think either of us expected that first conversation to turn into everything it became. But looking back, that day quietly changed everything.",
+      photo: ""
+    },
+    {
+      date: "That One Night",
+      emoji: "🌙",
+      title: "Talks That Went Past 2 A.M.",
+      text: "There's something about late-night conversations that make people say what they actually mean. We've had so many of those — voices getting sleepier, laughter getting louder, secrets we never told anyone else. Those nights taught me who you really are, and I've loved every version of you since.",
+      photo: ""
+    },
+    {
+      date: "The Good Kind of Chaos",
+      emoji: "😂",
+      title: "Laughing Until It Hurt",
+      text: "I don't even remember what was so funny half the time — that's the thing about laughing with you, the reason stops mattering. What I do remember is my stomach hurting, tears in my eyes, and thinking 'I hope we're still doing this when we're old.'",
+      photo: ""
+    },
+    {
+      date: "When It Got Hard",
+      emoji: "🫂",
+      title: "You Stayed Anyway",
+      text: "There were seasons that weren't easy — for both of us. And through all of it, you never once made me feel like I was too much or not enough. You just stayed. Showed up. Sat with me in it. That kind of loyalty isn't common, and I don't take it for granted.",
+      photo: ""
+    },
+    {
+      date: "Right Now",
+      emoji: "💫",
+      title: "Still Here, Still Us",
+      text: "Life has changed so much since the day we met — new places, new people, new chapters. But somehow, we're still here, still us, still finishing each other's sentences. If that's not proof that some friendships are just meant to last, I don't know what is.",
+      photo: ""
+    }
+  ],
+
+  // ── WHAT YOU MEAN TO US ──
+  meanings: [
+    { emoji: "🏡", title: "You're Our Safe Place", text: "With you, there's no need to pretend. You've built a space where it's always okay to just be exactly who we are." },
+    { emoji: "🕯️", title: "You Carry Light", text: "Even on your hardest days, you find a way to make the people around you feel a little lighter. That's a rare kind of strength." },
+    { emoji: "🧩", title: "You're The Missing Piece", text: "Somehow every plan, every memory, every inside joke feels incomplete without you. You just fit, effortlessly." },
+    { emoji: "🌟", title: "You Make Us Better", text: "Knowing you has quietly pushed all of us to be kinder, braver, and more ourselves. That's a gift not everyone gives." },
+    { emoji: "🤝", title: "Our Favorite Partner in Crime", text: "From spontaneous plans to terrible decisions we'd make all over again — every good story somehow has you in it." },
+    { emoji: "💎", title: "You're Simply Irreplaceable", text: "People like you don't come around twice. We know exactly how lucky we are to have you, today and always." }
+  ],
+
+  // ── PHOTO GALLERY ──
+  // src: "" shows an animated placeholder. Paste an image URL to replace it.
+  photos: [
+    { src: "", caption: "A memory saved for you 📸" },
+    { src: "", caption: "That day we couldn't stop laughing 😂" },
+    { src: "", caption: "Somewhere, sometime, being silly 🤍" },
+    { src: "", caption: "One of the good ones 💫" },
+    { src: "", caption: "This one lives in our group chat forever" },
+    { src: "", caption: "More memories coming soon 🎞️" }
+  ],
+
+  // ── REASONS YOU'RE SPECIAL (FLIP CARDS) ──
+  reasons: [
+    { text: "Your laugh is literally contagious — one room hears it and suddenly everyone's smiling for no reason.", emoji: "😄" },
+    { text: "You remember the tiny details people mention once — and somehow that always makes us feel truly seen.", emoji: "🎯" },
+    { text: "You give the most brutally honest advice, and somehow it always comes from the kindest place.", emoji: "💡" },
+    { text: "You've never once made anyone feel small for needing help — you just show up, no questions asked.", emoji: "🤲" },
+    { text: "Your playlists are unreasonably good and we will never admit how many are stolen from you.", emoji: "🎧" },
+    { text: "You turn ordinary Tuesdays into core memories without even trying. That's a rare kind of magic.", emoji: "✨" }
+  ],
+
+  // ── LETTER SECTION ──
+  letterGreeting: "Dear Harpreet,",
+  letterBody: `If you're reading this, it means you actually tapped the envelope — so first, hi. I've been wanting to say all of this properly for a while.
+
+Thank you for every 2 a.m. call you picked up without even asking why I was calling so late. Thank you for seeing straight through my "I'm fine" texts when I clearly wasn't, and never letting me get away with it.
+
+We've built something over the years that honestly feels unbreakable — through distance, through busy seasons, through versions of ourselves that kept changing. And somehow, you never left.
+
+You deserve every good thing this year is about to bring you. A birthday as beautiful, warm, and real as the friendship you've given all of us.
+
+Happy birthday. I hope today feels exactly as special as you make everyone else feel, every single day.`,
+  letterSign: "With all my love, always.",
+
+  // ── INTERACTIVE CAKE ──
+  cakeText: "Tap the cake to blow out the candles 💨",
+  cakeWish: "Your wish is on its way 💫",
+
+  // ── GRAND FINALE ──
+  finaleLine: "Happiest Birthday to the most amazing person",
+  finaleWish: "May this year bring you everything you quietly hope for, and even the things you haven't dared to wish for yet. We love you more than words on a screen could ever really say.",
+  footerNote: "Made with all our love 💕"
+};
+
+/* ══════════════════════════════════════════════════════════════
+   PERSISTENCE — restores any edits made through Edit Mode
+   ══════════════════════════════════════════════════════════════ */
+const LS_KEY = 'birthdaySiteConfig_v1';
+const DEFAULT_CONFIG = JSON.parse(JSON.stringify(CONFIG));
+try {
+  const saved = localStorage.getItem(LS_KEY);
+  if (saved) CONFIG = JSON.parse(saved);
+} catch (e) { console.warn('Could not load saved edits', e); }
+
+let saveTimer = null;
+function saveConfig(){
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => {
+    try { localStorage.setItem(LS_KEY, JSON.stringify(CONFIG)); }
+    catch (e) { console.warn('Could not save edits', e); }
+  }, 300);
+}
+
+function getByPath(obj, path){
+  return path.split('.').reduce((cur, key) => cur == null ? cur : cur[isFinite(key) ? Number(key) : key], obj);
+}
+function setByPath(obj, path, value){
+  const parts = path.split('.');
+  let cur = obj;
+  for (let i = 0; i < parts.length - 1; i++){
+    const key = isFinite(parts[i]) ? Number(parts[i]) : parts[i];
+    cur = cur[key];
+  }
+  const lastKey = isFinite(parts[parts.length - 1]) ? Number(parts[parts.length - 1]) : parts[parts.length - 1];
+  cur[lastKey] = value;
+}
+
+// path -> [elements] sharing the same CONFIG field (e.g. name appears in hero + finale)
+const cfgRegistry = {};
+function bindText(el, path){
+  el.setAttribute('data-cfg', path);
+  el.textContent = getByPath(CONFIG, path);
+  (cfgRegistry[path] = cfgRegistry[path] || []).push(el);
+  return el;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RENDER LOGIC — no need to edit below this line
+   ══════════════════════════════════════════════════════════════ */
+
+document.title = `Happy Birthday ${CONFIG.name} 🎂`;
+
+// ---------- Photo slot builder (handles placeholder + browse-to-change) ----------
+function createPhotoSlot(getSrc, setSrc, altText){
+  const slot = document.createElement('div');
+  slot.className = 'photo-slot';
+
+  function renderInner(){
+    slot.innerHTML = '';
+    const src = getSrc();
+    if (src && src.trim() !== ''){
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = altText;
+      img.loading = 'lazy';
+      slot.appendChild(img);
+    } else {
+      const ph = document.createElement('div');
+      ph.className = 'photo-placeholder';
+      ph.innerHTML = `<span class="icon">💗📷</span><span>photo coming soon</span>`;
+      slot.appendChild(ph);
+    }
+
+    const editBtn = document.createElement('label');
+    editBtn.className = 'photo-edit-btn';
+    editBtn.innerHTML = `📁 Change Photo`;
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = 'image/*';
+    fileInput.style.display = 'none';
+    fileInput.addEventListener('click', e => e.stopPropagation());
+    fileInput.addEventListener('change', e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = ev => {
+        setSrc(ev.target.result);
+        renderInner();
+        saveConfig();
+      };
+      reader.readAsDataURL(file);
+    });
+    editBtn.appendChild(fileInput);
+    slot.appendChild(editBtn);
+  }
+
+  renderInner();
+  return slot;
+}
+
+// ---------- Entry screen text ----------
+bindText(document.getElementById('entry-heading'), 'entryHeading');
+bindText(document.getElementById('entry-sub'), 'entrySub');
+bindText(document.getElementById('entry-btn'), 'entryBtn');
+
+// ---------- Hero ----------
+bindText(document.getElementById('hero-badge'), 'heroBadge');
+bindText(document.getElementById('hero-title'), 'heroTitle');
+bindText(document.getElementById('hero-name'), 'name');
+bindText(document.getElementById('hero-sub'), 'heroSub');
+
+// ---------- Memories ----------
+const memContainer = document.getElementById('memories-container');
+CONFIG.memories.forEach((m, i) => {
+  const card = document.createElement('div');
+  card.className = 'memory-card glass reveal';
+
+  const dot = document.createElement('div');
+  dot.className = 'memory-dot';
+  dot.textContent = m.emoji;
+
+  const date = bindText(document.createElement('span'), `memories.${i}.date`);
+  date.className = 'memory-date';
+
+  const title = bindText(document.createElement('h3'), `memories.${i}.title`);
+  title.className = 'script';
+
+  const text = bindText(document.createElement('p'), `memories.${i}.text`);
+  text.className = 'memory-text';
+
+  const photoSlot = createPhotoSlot(
+    () => CONFIG.memories[i].photo,
+    (val) => { CONFIG.memories[i].photo = val; },
+    CONFIG.memories[i].title
+  );
+
+  card.append(dot, date, title, text, photoSlot);
+  memContainer.appendChild(card);
+});
+
+// ---------- Meanings ----------
+const meanContainer = document.getElementById('meanings-container');
+CONFIG.meanings.forEach((item, i) => {
+  const card = document.createElement('div');
+  card.className = 'meaning-card glass reveal';
+
+  const icon = document.createElement('div');
+  icon.className = 'icon';
+  icon.textContent = item.emoji;
+
+  const title = bindText(document.createElement('h3'), `meanings.${i}.title`);
+  title.className = 'script';
+
+  const text = bindText(document.createElement('p'), `meanings.${i}.text`);
+
+  card.append(icon, title, text);
+  meanContainer.appendChild(card);
+});
+
+// ---------- Gallery ----------
+const galContainer = document.getElementById('gallery-container');
+CONFIG.photos.forEach((p, i) => {
+  const rot = (Math.random() * 6 - 3).toFixed(1);
+  const card = document.createElement('div');
+  card.className = 'polaroid reveal';
+  card.style.setProperty('--rot', `${rot}deg`);
+
+  const tape = document.createElement('div');
+  tape.className = 'tape';
+
+  const photoSlot = createPhotoSlot(
+    () => CONFIG.photos[i].src,
+    (val) => { CONFIG.photos[i].src = val; },
+    CONFIG.photos[i].caption
+  );
+
+  const caption = bindText(document.createElement('div'), `photos.${i}.caption`);
+  caption.className = 'caption';
+
+  card.append(tape, photoSlot, caption);
+  galContainer.appendChild(card);
+});
+
+// ---------- Reasons (flip cards) ----------
+const reasonsContainer = document.getElementById('reasons-container');
+CONFIG.reasons.forEach((r, i) => {
+  const card = document.createElement('div');
+  card.className = 'flip-card';
+
+  const inner = document.createElement('div');
+  inner.className = 'flip-inner';
+
+  const front = document.createElement('div');
+  front.className = 'flip-face flip-front';
+  front.innerHTML = `<div class="num script">#${i + 1}</div><div class="tap-label">tap to reveal</div>`;
+
+  const back = document.createElement('div');
+  back.className = 'flip-face flip-back';
+  const text = bindText(document.createElement('p'), `reasons.${i}.text`);
+  const emoji = document.createElement('div');
+  emoji.className = 'emoji';
+  emoji.textContent = r.emoji;
+  back.append(text, emoji);
+
+  inner.append(front, back);
+  card.appendChild(inner);
+  card.addEventListener('click', () => { if (!editMode) card.classList.toggle('flipped'); });
+  reasonsContainer.appendChild(card);
+});
+
+// ---------- Cake text ----------
+bindText(document.getElementById('cake-text'), 'cakeText');
+bindText(document.getElementById('cake-wish'), 'cakeWish');
+
+// ---------- Letter text ----------
+bindText(document.getElementById('letter-greeting'), 'letterGreeting');
+bindText(document.getElementById('letter-sign'), 'letterSign');
+document.getElementById('letter-body').setAttribute('data-cfg', 'letterBody');
+(cfgRegistry['letterBody'] = cfgRegistry['letterBody'] || []).push(document.getElementById('letter-body'));
+
+// ---------- Finale text ----------
+bindText(document.getElementById('finale-line'), 'finaleLine');
+bindText(document.getElementById('finale-name'), 'name');
+bindText(document.getElementById('finale-wish'), 'finaleWish');
+bindText(document.getElementById('footer-note'), 'footerNote');
+
+/* ══════════════════════════════════════════════════════════════
+   PARTICLES
+   ══════════════════════════════════════════════════════════════ */
+const particleField = document.getElementById('particles');
+const particleEmojis = ['💖', '✨', '🌸', '⭐', '💫'];
+const PARTICLE_COUNT = 26;
+for (let i = 0; i < PARTICLE_COUNT; i++){
+  const p = document.createElement('div');
+  const useEmoji = Math.random() > 0.45;
+  const left = Math.random() * 100;
+  const duration = 10 + Math.random() * 12;
+  const delay = Math.random() * 14;
+  p.style.left = `${left}vw`;
+  p.style.animationDuration = `${duration}s`;
+  p.style.animationDelay = `${delay}s`;
+  if (useEmoji){
+    p.className = 'particle emoji';
+    p.style.fontSize = `${14 + Math.random() * 14}px`;
+    p.textContent = particleEmojis[Math.floor(Math.random() * particleEmojis.length)];
+  } else {
+    p.className = 'particle dot';
+    const size = 5 + Math.random() * 6;
+    p.style.width = `${size}px`;
+    p.style.height = `${size}px`;
+    const colors = ['#e8a4a0', '#cbb3ff', '#f3c96b', '#ffb3d1'];
+    p.style.background = colors[Math.floor(Math.random() * colors.length)];
+  }
+  particleField.appendChild(p);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ENTRY OVERLAY INTERACTION
+   ══════════════════════════════════════════════════════════════ */
+const entryOverlay = document.getElementById('entry-overlay');
+const entryBtn = document.getElementById('entry-btn');
+
+function fireConfettiBurst(){
+  if (typeof confetti !== 'function') return;
+  confetti({
+    particleCount: 130,
+    spread: 80,
+    origin: { y: 0.6 },
+    colors: ['#ffb3d1', '#cbb3ff', '#f3c96b', '#e8a4a0', '#fff6ee']
+  });
+}
+
+entryBtn.addEventListener('click', () => {
+  fireConfettiBurst();
+  entryOverlay.classList.add('hide');
+  document.body.classList.remove('lock-scroll');
+  setTimeout(() => { entryOverlay.style.display = 'none'; }, 850);
+});
+
+/* ══════════════════════════════════════════════════════════════
+   REVEAL ON SCROLL
+   ══════════════════════════════════════════════════════════════ */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting){
+      entry.target.classList.add('in-view');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ══════════════════════════════════════════════════════════════
+   INTERACTIVE CAKE
+   ══════════════════════════════════════════════════════════════ */
+const cakeWrap = document.getElementById('cake-wrap');
+const cakeWishEl = document.getElementById('cake-wish');
+let cakeBlown = false;
+
+cakeWrap.addEventListener('click', () => {
+  if (editMode || cakeBlown) return;
+  cakeBlown = true;
+  document.querySelectorAll('[data-flame]').forEach(f => f.classList.add('out'));
+  setTimeout(() => {
+    fireConfettiBurst();
+    cakeWishEl.classList.add('show');
+  }, 500);
+});
+
+/* ══════════════════════════════════════════════════════════════
+   LETTER SECTION
+   ══════════════════════════════════════════════════════════════ */
+const letterEnvelope = document.getElementById('letter-envelope');
+const letterPaper = document.getElementById('letter-paper');
+const letterBodyEl = document.getElementById('letter-body');
+let letterOpened = false;
+let letterTypeToken = 0;
+
+function typewrite(text, el){
+  const myToken = ++letterTypeToken;
+  let i = 0;
+  const cursor = document.createElement('span');
+  cursor.className = 'cursor-blink';
+  cursor.textContent = ' ';
+  function step(){
+    if (myToken !== letterTypeToken) return;
+    if (i <= text.length){
+      el.textContent = text.slice(0, i);
+      el.appendChild(cursor);
+      i++;
+      const extraPause = (i % 40 === 0) ? 260 : 0;
+      setTimeout(step, 18 + extraPause);
+    } else {
+      cursor.remove();
+    }
+  }
+  step();
+}
+
+letterEnvelope.addEventListener('click', () => {
+  if (editMode || letterOpened) return;
+  letterOpened = true;
+  letterEnvelope.classList.add('hidden');
+  letterPaper.classList.add('show');
+  typewrite(CONFIG.letterBody, letterBodyEl);
+});
+
+/* ══════════════════════════════════════════════════════════════
+   GRAND FINALE
+   ══════════════════════════════════════════════════════════════ */
+const finaleBtnWrap = document.getElementById('finale-btn-wrap');
+const finaleBtn = document.getElementById('finale-btn');
+const finaleContent = document.getElementById('finale-content');
+let finaleTriggered = false;
+
+finaleBtn.addEventListener('click', () => {
+  if (editMode || finaleTriggered) return;
+  finaleTriggered = true;
+  finaleBtnWrap.classList.add('hidden');
+  finaleContent.classList.add('show');
+
+  const duration = 3000;
+  const end = Date.now() + duration;
+  const colors = ['#ffb3d1', '#cbb3ff', '#f3c96b', '#e8a4a0', '#c0426b'];
+
+  const interval = setInterval(() => {
+    if (Date.now() > end){
+      clearInterval(interval);
+      return;
+    }
+    if (typeof confetti === 'function'){
+      confetti({
+        particleCount: 40,
+        startVelocity: 55,
+        spread: 100,
+        origin: { x: Math.random(), y: Math.random() * 0.4 },
+        colors
+      });
+    }
+  }, 200);
+});
+
+/* ══════════════════════════════════════════════════════════════
+   EDIT MODE — browse-to-change photos & click-to-edit text,
+   with autosave + backup/restore so nothing gets lost.
+   ══════════════════════════════════════════════════════════════ */
+// Flip to true to bring editing back — that's the only change needed.
+const EDIT_MODE_ENABLED = true;
+
+let editMode = false;
+const editToggleBtn = document.getElementById('edit-toggle-btn');
+const editDoneBtn = document.getElementById('edit-done-btn');
+const editResetBtn = document.getElementById('edit-reset-btn');
+const editBackupBtn = document.getElementById('edit-backup-btn');
+const editRestoreBtn = document.getElementById('edit-restore-btn');
+const editRestoreInput = document.getElementById('edit-restore-input');
+
+if (!EDIT_MODE_ENABLED){
+  editToggleBtn.style.display = 'none';
+}
+
+function enableEditMode(){
+  if (!EDIT_MODE_ENABLED) return;
+  editMode = true;
+  document.body.classList.add('edit-mode');
+  document.body.classList.remove('lock-scroll');
+  document.querySelectorAll('[data-cfg]').forEach(el => el.setAttribute('contenteditable', 'true'));
+  letterTypeToken++; // stop any in-progress typewriter
+  letterBodyEl.textContent = CONFIG.letterBody;
+}
+
+function disableEditMode(){
+  editMode = false;
+  document.body.classList.remove('edit-mode');
+  document.querySelectorAll('[data-cfg]').forEach(el => el.removeAttribute('contenteditable'));
+  if (!letterOpened){ letterBodyEl.textContent = ''; }
+}
+
+editToggleBtn.addEventListener('click', () => {
+  if (editMode) disableEditMode(); else enableEditMode();
+});
+editDoneBtn.addEventListener('click', disableEditMode);
+
+// Delegated listener: any [data-cfg] element being typed into updates CONFIG live
+document.addEventListener('input', (e) => {
+  if (!editMode) return;
+  const el = e.target.closest('[data-cfg]');
+  if (!el) return;
+  const path = el.getAttribute('data-cfg');
+  const value = (el.innerText !== undefined ? el.innerText : el.textContent).replace(/\r\n/g, '\n');
+  setByPath(CONFIG, path, value);
+  (cfgRegistry[path] || []).forEach(other => {
+    if (other !== el) other.textContent = value;
+  });
+  if (path === 'name'){ document.title = `Happy Birthday ${value} 🎂`; }
+  saveConfig();
+});
+
+// Download a JSON backup of everything (text edits + embedded photos)
+editBackupBtn.addEventListener('click', () => {
+  const blob = new Blob([JSON.stringify(CONFIG, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `birthday-site-backup-${CONFIG.name.replace(/\s+/g, '_')}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+});
+
+// Restore edits from a previously downloaded JSON backup
+editRestoreBtn.addEventListener('click', () => editRestoreInput.click());
+editRestoreInput.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    try {
+      const parsed = JSON.parse(ev.target.result);
+      localStorage.setItem(LS_KEY, JSON.stringify(parsed));
+      location.reload();
+    } catch (err){
+      alert('That file could not be read as a valid backup.');
+    }
+  };
+  reader.readAsText(file);
+});
+
+// Wipe all edits and restore the original CONFIG written in the code
+editResetBtn.addEventListener('click', () => {
+  if (!confirm('Reset all edits back to the original content? This cannot be undone.')) return;
+  localStorage.removeItem(LS_KEY);
+  location.reload();
+});
+</script>
+</body>
+</html>
